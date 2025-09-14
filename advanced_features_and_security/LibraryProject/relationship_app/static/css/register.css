@@ -1,0 +1,108 @@
+/* Body and background */
+body {
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  background: linear-gradient(135deg, #74ebd5, #acb6e5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  margin: 0;
+  padding: 20px; /* padding to prevent overflow on small screens */
+}
+
+/* Card container for login/register */
+.login-container {
+  background: white;
+  padding: 30px 20px;
+  border-radius: 12px;
+  box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.2);
+  width: 100%;
+  max-width: 400px; /* prevent it from being too wide */
+  text-align: center;
+  box-sizing: border-box; /* include padding in width */
+}
+
+/* Title */
+h1 {
+  margin-bottom: 20px;
+  color: #333;
+}
+
+/* Form styling */
+form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* Input fields */
+input[type="text"],
+input[type="password"],
+input[type="email"] {
+  width: 100%;
+  padding: 10px;
+  margin: 8px 0;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  font-size: 14px;
+  box-sizing: border-box; /* prevent overflow */
+}
+
+/* Buttons */
+.btn {
+  width: 100%;
+  padding: 10px;
+  margin-top: 12px;
+  border: none;
+  border-radius: 8px;
+  color: white;
+  font-weight: bold;
+  cursor: pointer;
+  transition: 0.3s ease;
+}
+
+/* Specific button colors */
+.login-btn {
+  background-color: #007bff;
+}
+.login-btn:hover {
+  background-color: #0056b3;
+}
+
+.register-btn {
+  background-color: #28a745;
+}
+.register-btn:hover {
+  background-color: #1e7e34;
+}
+
+/* Links under form */
+.register-text {
+  margin-top: 15px;
+  font-size: 14px;
+  color: #555;
+}
+.register-text .link {
+  color: #007bff;
+  font-weight: bold;
+  text-decoration: none;
+}
+.register-text .link:hover {
+  text-decoration: underline;
+}
+
+/* Responsive tweaks */
+@media (max-width: 500px) {
+  .login-container {
+    padding: 20px 15px;
+  }
+  input[type="text"],
+  input[type="password"],
+  input[type="email"] {
+    font-size: 13px;
+  }
+  .btn {
+    padding: 8px;
+    font-size: 14px;
+  }
+}
