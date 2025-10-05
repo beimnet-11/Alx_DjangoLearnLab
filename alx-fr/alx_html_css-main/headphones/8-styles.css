@@ -1,0 +1,146 @@
+/* Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+html, body {
+    height: 100%;
+}
+
+/* HEADER */
+header {
+    background-image: url("headphones_hero_1.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-color: black;
+    min-height: 100vh;
+    color: white;
+}
+
+/* Header container */
+.header-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+    margin-bottom: 200px;
+}
+
+/* Logo */
+.logo {
+    width: 161px;
+    height: 32px;
+}
+
+/* Desktop links */
+.links {
+    display: flex;
+    gap: 30px;
+    list-style: none;
+}
+.links a {
+    text-decoration: none;
+    color: white;
+    font-weight: bold;
+}
+.links a:hover {
+    color: #FF6565;
+    opacity: 0.9;
+}
+
+/* Hamburger button */
+.toggle_btn {
+    display: none;
+    font-size: 28px;
+    cursor: pointer;
+    color: white;
+}
+
+/* Side navigation */
+.side-nav {
+    position: fixed;
+    top: 0;
+    right: -250px;
+    width: 250px;
+    height: 100%;
+    background-color: #333;
+    padding-top: 60px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start; /* start from top */
+    gap: 20px;
+    z-index: 1000;
+    list-style: none;
+    transition: right 0.3s ease-in-out;
+}
+
+/* Show side nav */
+.side-nav.active {
+    right: 0;
+}
+
+/* Side nav links */
+.side-nav a {
+    display: block;
+    width: 100%;
+    padding: 10px 20px;
+    color: white;
+    text-decoration: none;
+}
+.side-nav a:hover {
+    background-color: #444;
+}
+
+/* Close button inside side nav */
+.close_btn {
+    position: absolute;
+    top: 15px;
+    right: 20px;
+    font-size: 30px;
+    cursor: pointer;
+    color: white;
+}
+
+/* Header text section */
+.headerFinal {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+h1 {
+    margin-bottom: 0;
+    font-family: Source Sans Pro;
+    font-weight: bold;
+}
+h2 {
+    margin-top: 0;
+    font-size: 22px;
+}
+button {
+    padding: 12px 24px;
+    background-color: #FF6565;
+    color: white;
+    border: none;
+    border-radius: 30px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    margin-top: 50px;
+    margin-bottom: 70px;
+}
+p {
+    font-family: Source Sans Pro;
+    padding-bottom: 70px;
+}
+
+/* Responsive for mobile */
+@media (max-width: 480px) {
+    .links {
+        display: none;
+    }
+    .toggle_btn {
+        display: block;
+    }
+}
