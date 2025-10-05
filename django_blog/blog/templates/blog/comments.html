@@ -1,0 +1,141 @@
+{% extends 'blog/base.html' %}
+{% load static %}
+
+{% block extra_css %}
+<style>
+.comment-container {
+    max-width: 700px;
+    margin: 20px auto;
+    font-family: Arial, sans-serif;
+}
+
+/* Create button */
+.create-comment {
+    text-align: right;
+    margin-bottom: 15px;
+}
+
+.btn-create-comment {
+    background: #1877f2;
+    color: #fff;
+    padding: 8px 16px;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: bold;
+    transition: background 0.2s;
+}
+
+.btn-create-comment:hover {
+    background: #155bb5;
+}
+
+.comment-card {
+    background: #fff;
+    padding: 15px 20px;
+    border-radius: 12px;
+    box-shadow: 0 3px 8px rgba(0, 0, 0, 0.1);
+    margin-bottom: 15px;
+    transition: transform 0.2s;
+}
+
+.comment-card:hover {
+    transform: translateY(-2px);
+}
+
+.comment-header {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.comment-avatar {
+    width: 40px;
+    height: 40px;
+    background: #1877f2;
+    color: #fff;
+    font-weight: bold;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 10px;
+    text-transform: uppercase;
+}
+
+.comment-author {
+    font-weight: bold;
+    font-size: 15px;
+}
+
+.comment-post {
+    font-size: 13px;
+    color: #555;
+}
+
+.comment-body {
+    font-size: 14px;
+    color: #333;
+    line-height: 1.4;
+    margin-bottom: 10px;
+}
+
+.comment-actions {
+    display: flex;
+    gap: 10px;
+}
+
+.btn-edit,
+.btn-delete {
+    text-decoration: none;
+    padding: 5px 10px;
+    border-radius: 5px;
+    font-size: 13px;
+    color: #fff;
+    transition: background 0.2s;
+}
+
+.btn-edit {
+    background: #ffb200;
+}
+
+.btn-edit:hover {
+    background: #ffa500;
+}
+
+.btn-delete {
+    background: #e63946;
+}
+
+.btn-delete:hover {
+    background: #d62828;
+}
+</style>
+{% endblock %}
+
+{% block content %}
+<div class="comment-container">
+    <!-- Create Comment Button -->
+    <div class="create-comment">
+        <a href="{% url 'comment-create-view' post_id %}" class="btn-create-comment">+ Add Comment</a>
+    </div>
+
+    {% for comment in comments %}
+    <div class="comment-card">
+        <div class="comment-header">
+            <div class="comment-avatar">{{ comment.author.username|first }}</div>
+            <div>
+                <div class="comment-author">{{ comment.author }}</div>
+                <div class="comment-post">On: {{ comment.post.title }}</div>
+            </div>
+        </div>
+        <div class="comment-body">{{ comment.content }}</div>
+        <div class="comment-actions">
+            <a href="{% url 'comment-update-view' comment.pk %}" class="btn-edit">✏ Edit</a>
+            <a href="{% url 'comment-delete-view' comment.pk %}" class="btn-delete">🗑 Delete</a>
+        </div>
+    </div>
+    {% empty %}
+    <p>No comments yet. Be the first to comment!</p>
+    {% endfor %}
+</div>
+{% endblock %}

@@ -1,0 +1,67 @@
+{% extends "blog/base.html" %}
+
+{% block title %}Delete Post{% endblock %}
+
+{% block extra_css %}
+<style>
+  .delete-container {
+    max-width: 450px;
+    margin: 60px auto;
+    padding: 30px;
+    background: #fff;
+    border-radius: 12px;
+    box-shadow: 0 6px 20px rgba(0,0,0,0.1);
+    text-align: center;
+    font-family: Arial, sans-serif;
+  }
+
+  .delete-container h2 {
+    color: #e63946;
+    margin-bottom: 25px;
+  }
+
+  .delete-container form button {
+    background: #e63946;
+    color: white;
+    border: none;
+    padding: 12px 25px;
+    border-radius: 8px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background 0.3s;
+    margin-right: 10px;
+  }
+
+  .delete-container form button:hover {
+    background: #c5283d;
+  }
+
+  .delete-container a {
+    text-decoration: none;
+    color: #555;
+    padding: 12px 25px;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+    transition: background 0.3s, color 0.3s;
+  }
+
+  .delete-container a:hover {
+    background: #f1f1f1;
+    color: #333;
+  }
+</style>
+{% endblock %}
+
+{% block content %}
+<div class="delete-container">
+  <h2>Are you sure you want to delete?</h2>
+  <p><strong>{{ comment.author }}</strong></p>
+  <p>{{ comment.content }}</p>
+  <form method="post">
+      {% csrf_token %}
+      <button type="submit">Yes, Delete</button>
+      <a href="{% url 'posts' %}">Cancel</a>
+  </form>
+</div>
+{% endblock %}

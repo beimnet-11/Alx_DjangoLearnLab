@@ -1,0 +1,41 @@
+{% extends "blog/base.html" %}
+
+{% block title %}Post Detail{% endblock %}
+
+{% block extra_css %}
+<style>
+  .post-detail-container {
+    max-width: 600px;
+    margin: 50px auto;
+    padding: 25px;
+    background: #fff;
+    border-radius: 12px;
+    box-shadow: 0 6px 20px rgba(0,0,0,0.1);
+    font-family: Arial, sans-serif;
+  }
+
+  .post-detail-container h2 {
+    margin-bottom: 15px;
+    color: #333;
+  }
+
+  .post-detail-container p {
+    margin: 8px 0;
+    color: #555;
+    line-height: 1.5;
+  }
+
+  .post-author {
+    font-weight: bold;
+    color: #1877f2;
+  }
+</style>
+{% endblock %}
+
+{% block content %}
+<div class="post-detail-container">
+  <h2>{{ post.title }}</h2>
+  <p class="post-author">Author: {{ post.author }}</p>
+  <p>{{ post.content }}</p>
+</div>
+{% endblock %}

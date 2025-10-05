@@ -1,0 +1,148 @@
+{% extends "blog/base.html" %}
+{% load static %}
+
+{% block extra_css %}
+<style>
+.feed-container {
+  max-width: 650px;
+  margin: 30px auto;
+  font-family: Arial, sans-serif;
+}
+
+.create-post {
+  text-align: right;
+  margin-bottom: 20px;
+}
+
+.btn-create {
+  background: #1877f2;
+  color: #fff;
+  padding: 10px 18px;
+  border-radius: 8px;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.btn-comment {
+  background: #00c3ff;
+  color: #fff;
+  padding: 10px 18px;
+  border-radius: 8px;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.post-card-link {
+  text-decoration: none;
+  color: inherit;
+}
+
+.post-card {
+  background: #fff;
+  padding: 20px;
+  border-radius: 15px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  margin-bottom: 20px;
+  transition: transform 0.2s;
+}
+
+.post-card:hover {
+  transform: translateY(-3px);
+}
+
+.post-header {
+  display: flex;
+  align-items: center;
+  margin-bottom: 15px;
+}
+
+.author-avatar {
+  width: 45px;
+  height: 45px;
+  background: #1877f2;
+  color: #fff;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  margin-right: 10px;
+}
+
+.author-info h4 {
+  margin: 0;
+  font-size: 16px;
+}
+
+.author-info small {
+  color: #666;
+}
+
+.post-body h3 {
+  margin: 0 0 8px;
+}
+
+.post-body p {
+  color: #333;
+  line-height: 1.5;
+}
+
+.post-actions {
+  margin-top: 15px;
+}
+
+.btn-edit,
+.btn-delete {
+  text-decoration: none;
+  padding: 6px 12px;
+  border-radius: 6px;
+  font-size: 14px;
+  margin-right: 8px;
+}
+
+.btn-edit {
+  background: #ffb200;
+  color: #fff;
+}
+
+.btn-delete {
+  background: #e63946;
+  color: #fff;
+}
+</style>
+{% endblock %}
+
+{% block content %}
+<div class="feed-container">
+  <div class="create-post">
+    <a href="{% url 'post-create-view' %}" class="btn-create">+ Create Post</a>
+  </div>
+
+  {% for post in posts %}
+  <a href="{% url 'post-detail-view' post.pk %}" class="post-card-link">
+    <div class="post-card">
+      <div class="post-header">
+        <div class="author-avatar">{{ post.author.username|first|upper }}</div>
+        <div class="author-info">
+          <h4>{{ post.author }}</h4>
+          <small>{{ post.date_posted|date:"M d, Y" }}</small>
+        </div>
+      </div>
+
+      <div class="post-body">
+        <h3>{{ post.title }}</h3>
+        <p>{{ post.content|truncatewords:20 }}</p>
+      </div>
+
+      <div class="post-actions">
+        <a href="{% url 'comments' post.pk %}" class="btn-comment">Comment</a>
+        <a href="{% url 'post-update-view' post.pk %}" class="btn-edit">✏ Edit</a>
+        <a href="{% url 'post-delete-view' post.pk %}" class="btn-delete">🗑 Delete</a>
+      </div>
+    </div>
+  </a>
+  {% empty %}
+  <p class="no-posts">No posts yet. Be the first to create one!</p>
+  {% endfor %}
+</div>
+{% endblock %}

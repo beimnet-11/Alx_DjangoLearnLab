@@ -1,0 +1,5 @@
+{% extends 'blog/base.html' %}
+{% block content %}
+<h2>Posts tagged: "{{ tag_slug }}"</h2>
+{% include 'blog/posts_list_partial.html' with posts=posts %}
+{% endblock %}
