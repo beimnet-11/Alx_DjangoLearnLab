@@ -1,0 +1,100 @@
+html, body {
+    height: 100%;         /* Ensure full height */
+    margin: 0;            /* Remove default spacing */
+    padding: 0;
+  }
+  
+header {
+    background-image:url("headphones_hero_1.jpg") ;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-color: black;
+    min-height: 100vh;
+    color: white;
+    
+    
+}
+.header-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+    margin-bottom: 200px;
+}
+.logo {
+    width: 161px;
+    height: 32px;
+    
+}
+nav {
+    display :flex;
+    justify-content: flex-end;
+    align-items: end;
+    gap: 20px;
+    font-size: 1.2rem;
+    font-weight: bold;
+    
+}
+nav ul {
+    display :flex;
+    justify-content: flex-end;
+    align-items: end;
+   text-decoration: none;
+    gap: 30px;
+    font-size: 16px;
+    font-weight: bold;
+    color :white;
+    list-style: none;
+}
+.nav{
+    text-decoration: none;
+    color: white;
+
+}
+a:hover   {
+    color: #FF6565;
+    opacity: 0.9;
+    font-family: Source Sans Pro, sans-serif;
+    
+}
+.headerFinal {
+    display: flex;
+    
+    flex-direction: column;
+    
+    align-content: center;
+    align-items: center;
+  
+}
+h1 {
+margin-bottom: 0px;
+
+    height: 40px;
+    font-family: Source Sans Pro ;
+    font-weight: bold;
+
+}
+h2 {
+    margin-top: 0px;
+    font-size: 22px;
+}
+button {
+    padding: 12px 24px;
+    background-color: #FF6565;  /* Background color */
+    color: white;               /* Text color */
+    border: none;               /* Remove default border */
+    border-radius: 30px;         /* Rounded corners */
+    
+    font-weight: 600px;
+    cursor: pointer;            /* Pointer on hover */
+    transition: all 0.3s ease;
+    margin-top: 50px;
+    margin-bottom: 70px;  /* Smooth hover effect */
+  }
+  
+
+p {
+    font-family: Source Sans Pro;
+    padding-bottom: 70px;
+}
+  

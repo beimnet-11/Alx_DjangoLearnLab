@@ -1,0 +1,77 @@
+body , main {
+    display : flex;
+}
+body {
+    
+    flex-direction: column;
+}
+main {
+   
+    flex-direction : row;
+    flex: auto;
+}
+main > article {
+    flex: 2;
+    overflow-y: auto;
+}
+main > aside {
+    flex: 1;
+    overflow-y: auto;
+    background-color: rgb(49, 82, 143);
+}
+footer  {
+    background-color :rgb(68, 73, 141);
+    color: white;  
+}
+header {
+    background-color: rgb(49, 82, 143);
+    border-color:rgb(49, 82, 143) ;
+    
+}
+a:hover {
+    color:rgb(76, 146, 196);
+    text-decoration: underline;
+}
+body {
+    background-color: #f3ecec;
+    color: #0a0909;
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+}
+h1 {
+    color: #a43b3b;
+    font-weight: 800;
+}
+h2 {
+    color:#a43b3b;
+    font-weight: bolder;
+}
+h3{
+    color: #a43b3b;
+    font-weight: 600;
+    text-align: center;
+}
+p{
+    color : #0b0202;
+    font-size: 1.1em;
+}
+table {
+    width: 100%;
+    border-collapse: collapse;
+    font-family: Arial, sans-serif;
+  }
+  
+  th, td {
+    padding: 12px;
+    border: 1px solid #7a6e6e;
+    text-align: left;
+  }
+  
+  thead {
+    background-color: #f2f2f2;
+  }
+  .web{
+    color: #512de0;
+    font-weight: bold;
+    text-decoration: none;
+  }

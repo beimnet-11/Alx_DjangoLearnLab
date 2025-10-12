@@ -1,0 +1,53 @@
+.head2 {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-image: url(headphones_hero_2.jpg);
+    color: white;
+    background-repeat: no-repeat;
+    background-size: cover;
+    min-height: 100vh;
+}
+h2 {
+    margin-bottom: 20px;
+    margin-top: 150px;
+
+}
+.head2 p {
+   margin-bottom: 100px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+.pentagone {
+    display :flex;
+    gap:100px;
+
+}
+
+/*this is the edited part of the question from the forth question  */
+
+.subs {
+    width: 200px;
+    height: 190px;
+    background-color: #FF6565;
+    clip-path: polygon(50% 0%, 100% 38%, 82% 100%, 18% 100%, 0% 38%);
+   
+    margin: 50px auto; text-align: center;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-position: center;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 100px;
+    flex-direction: column;
+    margin-bottom: 100px;
+      
+}
+.subs span {
+    position: absolute;
+    margin-top: 50px;
+    font-weight: bold;
+    transform: translate(-50%, -50%);
+    font-size: 40px;
+    
+}

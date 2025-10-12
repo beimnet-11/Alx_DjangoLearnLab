@@ -1,0 +1,29 @@
+.whatdo{
+    display : flex;
+    flex-direction: column;
+    align-items: center;
+    min-height: 100%;
+}
+h2{
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin-bottom: 60px;
+}
+.whatcontain{
+    display: flex;
+}
+ .whatdo .p1 {
+    font-size: 20px;
+ }
+
+.centerit{
+    display: flex;
+    flex-direction : column;
+    align-items:center;
+    justify-content: space-between;
+    margin-top: 70px;
+}
+.whatcontain .centerit .para {
+    text-align: center;
+   
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
