@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Dynamic Quote Generator – Complete</title>
+  <style>
+    :root { --pad: 12px; }
+    * { box-sizing: border-box; }
+    body { font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif; max-width: 900px; margin: 24px auto; padding: 0 16px; }
+    h1 { margin: 0 0 6px; }
+    #subtitle { color: #666; margin-bottom: 16px; }
+    #quoteDisplay { border: 1px solid #ddd; border-radius: 12px; padding: 16px; min-height: 72px; display: flex; align-items: center; margin: 8px 0 16px; }
+    .row { display: flex; gap: 8px; flex-wrap: wrap; margin: 8px 0; }
+    input[type="text"], select { padding: var(--pad); border: 1px solid #ccc; border-radius: 10px; flex: 1 1 260px; }
+    button { padding: var(--pad) 14px; border: 1px solid #bbb; border-radius: 10px; background: #f7f7f7; cursor: pointer; }
+    button:hover { background: #efefef; }
+    #status { min-height: 1.2em; color: #0a6; margin-top: 4px; }
+    #notice { color: #a50; }
+    #listContainer { margin-top: 8px; }
+    ul#quoteList { list-style: none; padding: 0; margin: 0; }
+    ul#quoteList li { padding: 10px 12px; border: 1px solid #eee; border-radius: 10px; margin: 6px 0; display: flex; justify-content: space-between; gap: 12px; align-items: start; }
+    .meta { color: #666; font-size: 12px; }
+    .right { display: flex; gap: 6px; }
+    .pill { font-size: 12px; padding: 2px 8px; border: 1px solid #ccc; border-radius: 999px; }
+  </style>
+</head>
+<body>
+  <h1>Dynamic Quote Generator</h1>
+  <div id="subtitle">DOM Manipulation • Local & Session Storage • JSON Import/Export • Category Filters • Server Sync</div>
+
+  <!-- Quote display & controls -->
+  <div class="row">
+    <select id="categoryFilter" title="Filter by category"></select>
+    <button id="newQuote">Show Random Quote</button>
+    <button id="syncNow">Sync Now</button>
+  </div>
+
+  <div id="quoteDisplay"></div>
+
+  <!-- Add quote form -->
+  <div class="row">
+    <input id="newQuoteText" type="text" placeholder="Enter a new quote" />
+    <input id="newQuoteCategory" type="text" placeholder="Enter quote category" />
+    <button id="addQuoteBtn">Add Quote</button>
+  </div>
+
+  <!-- Import / Export -->
+  <div class="row">
+    <button id="exportBtn">Export Quotes (JSON)</button>
+    <label>
+      <input type="file" id="importFile" accept=".json" style="display:none;">
+      <button id="importBtn" type="button">Import Quotes (JSON)</button>
+    </label>
+  </div>
+
+  <div id="status"></div>
+  <div id="notice" aria-live="polite"></div>
+
+  <!-- Optional: list of current quotes (after filter) -->
+  <div id="listContainer">
+    <h3>Quotes</h3>
+    <ul id="quoteList"></ul>
+  </div>
+
+<script src="script.js"></script>
+</body>
+</html>
