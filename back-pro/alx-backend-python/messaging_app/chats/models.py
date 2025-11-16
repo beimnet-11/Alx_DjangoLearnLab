@@ -1,4 +1,3 @@
-from django.db import models
 import uuid
 from django.db import models
 from django.contrib.auth.models import AbstractUser
@@ -14,33 +13,26 @@ class User(AbstractUser):
         HOST = 'host', 'Host'
         ADMIN = 'admin', 'Admin'
     
-    # Custom fields
+    # Custom fields - matching the specification exactly
     user_id = models.UUIDField(
         primary_key=True, 
         default=uuid.uuid4, 
         editable=False,
         db_index=True
     )
-    phone_number = models.CharField(
-        max_length=20, 
-        blank=True, 
-        null=True
-    )
+    first_name = models.CharField(max_length=150)  # VARCHAR, NOT NULL
+    last_name = models.CharField(max_length=150)   # VARCHAR, NOT NULL
+    email = models.EmailField(unique=True, db_index=True)  # VARCHAR, UNIQUE, NOT NULL
+    phone_number = models.CharField(max_length=20, blank=True, null=True)  # VARCHAR, NULL
     role = models.CharField(
         max_length=10,
         choices=Role.choices,
         default=Role.GUEST
     )
-    created_at = models.DateTimeField(
-        default=timezone.now
-    )
+    created_at = models.DateTimeField(default=timezone.now)  # TIMESTAMP, DEFAULT CURRENT_TIMESTAMP
     
     # Override the default username field to use email
     username = None
-    email = models.EmailField(
-        unique=True,
-        db_index=True
-    )
     
     USERNAME_FIELD = 'email'
     REQUIRED_FIELDS = ['first_name', 'last_name']
@@ -64,21 +56,21 @@ class Conversation(models.Model):
         editable=False,
         db_index=True
     )
-    participants = models.ManyToManyField(
+    # According to spec: participants_id (Foreign Key, references User(user_id))
+    # This means the conversation tracks which user is involved
+    participant = models.ForeignKey(
         User,
+        on_delete=models.CASCADE,
         related_name='conversations'
     )
-    created_at = models.DateTimeField(
-        default=timezone.now
-    )
+    created_at = models.DateTimeField(default=timezone.now)  # TIMESTAMP, DEFAULT CURRENT_TIMESTAMP
     
     class Meta:
         db_table = 'conversation'
         ordering = ['-created_at']
     
     def __str__(self):
-        participant_names = [str(user) for user in self.participants.all()]
-        return f"Conversation: {', '.join(participant_names)}"
+        return f"Conversation with {self.participant}"
 
 
 class Message(models.Model):
@@ -100,10 +92,8 @@ class Message(models.Model):
         on_delete=models.CASCADE,
         related_name='messages'
     )
-    message_body = models.TextField()
-    sent_at = models.DateTimeField(
-        default=timezone.now
-    )
+    message_body = models.TextField()  # TEXT, NOT NULL
+    sent_at = models.DateTimeField(default=timezone.now)  # TIMESTAMP, DEFAULT CURRENT_TIMESTAMP
     
     class Meta:
         db_table = 'message'
@@ -115,4 +105,3 @@ class Message(models.Model):
     
     def __str__(self):
         return f"Message from {self.sender} at {self.sent_at}"
-# Create your models here.
